@@ -1,10 +1,10 @@
 import { useState, ChangeEventHandler } from "react";
-import { writeText } from '@tauri-apps/api/clipboard';
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 import DropDown from './components/drop_down';
 import Tip from './components/tip';
 import Loading from './components/loading';
 import { openAIVaribleNamingApi, VariableNamingConventions } from "./api";
+import { writeText } from './utils';
 
 import "./App.css";
 

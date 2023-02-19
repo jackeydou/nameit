@@ -1,6 +1,9 @@
 async function writeText(str: string): Promise<void> {
-  if (navigator.clipboard) {
-    return navigator.clipboard.writeText(str)
+  try {
+    if (navigator.clipboard) {
+      return navigator.clipboard.writeText(str)
+    }
+  } catch (error) {
   }
   return Promise.reject(void 0);
 }
