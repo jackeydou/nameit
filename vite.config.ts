@@ -24,5 +24,8 @@ export default defineConfig({
     minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
+  },
+  define: {
+    IS_WEB: Boolean(process.env.VITE_WEB)
   }
 });

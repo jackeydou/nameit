@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "dev:web": "tsc && VITE_WEB=1 vite",
+    "build:web": "tsc && VITE_WEB=1 vite build",
     "preview": "vite preview",
     "tauri": "tauri"
   },
@@ -13,6 +15,7 @@
     "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.16",
     "@tauri-apps/api": "^1.2.0",
+    "axios": "^1.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
