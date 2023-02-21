@@ -1,5 +1,6 @@
 import { useState, ChangeEventHandler } from "react";
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
+import { useTranslation } from 'react-i18next';
 import DropDown from './components/drop_down';
 import Tip from './components/tip';
 import Loading from './components/loading';
@@ -9,6 +10,7 @@ import { writeText } from './utils';
 import "./App.css";
 
 function App() {
+  const { t } = useTranslation()
   const [prompt, setPrompt] = useState("");
   const [convention, setConvention] = useState<VariableNamingConventions>(VariableNamingConventions.Camelcase);
   const [variableName, setVaribleName] = useState("");
@@ -47,26 +49,26 @@ function App() {
 
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Tip content="copy to your clipboard" visible={copyTipVisible} />
+      <Tip content={t("Copied to the clipboard")} visible={copyTipVisible} />
       <main className="flex flex-1 w-full flex-col items-center text-center px-4 mt-2 sm:mt-4">
         <h1 className="sm:text-4xl text-4xl max-w-2xl font-bold text-slate-900">
-          Name the variables for you
+          {t('Name the variables for you')}
         </h1>
         <div className="max-w-xl w-full mt-4">
           <p className="text-left font-medium">
-            Select your variable naming convention.
+            {t('Select your variable naming convention.')}
           </p>
           <div className="block">
             <DropDown onChange={onChangeNamingConvention} />
           </div>
           <p className="text-left font-medium sm:mt-8 mt-4">
-            Describe the information of the varible.
+            {t('Describe the information of the varible.')}
           </p>
           <textarea
             value={prompt}
             rows={4}
             className="w-full rounded-md border border-gray-300 shadow-sm focus:border-black focus:ring-black my-5 py-2 px-3 outline-none"
-            placeholder="e.g. A variable to save the audio link."
+            placeholder={t("e.g. A variable to save the audio link.") as string}
             onChange={onChangePrompt}
           ></textarea>
 
@@ -75,7 +77,7 @@ function App() {
             type="button" 
             onClick={nameButtonClick}
           >
-            {loading ? <Loading color="#fff" style="normal"/> : <span>Name it!</span>}
+            {loading ? <Loading color="#fff" style="normal"/> : <span>{t('Name it!')}</span>}
           </button>
         </div>
         {variableName && <div
