@@ -9,17 +9,19 @@ export default async function handler(request: Request): Promise<Response> {
 
 
   const payload = {
-    model: "text-davinci-003",
-    max_tokens: 100,
-    temperature: 0,
-    prompt,
-    top_p: 1,
-    n: 1,
-    stream: false,
-    logprobs: null,
-    stop: "$$",
+    model: "gpt-3.5-turbo",
+    messages: [{
+      role: "user",
+      content: prompt,
+    }],
+    // max_tokens: 100,
+    // temperature: 0,
+    // top_p: 1,
+    // n: 1,
+    // stream: false,
+    // logprobs: null,
   };
-  return await fetch("https://api.openai.com/v1/completions", {
+  return await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.VITE_OPEN_AI_KEY}`,
