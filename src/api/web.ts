@@ -1,5 +1,5 @@
 import axios from "axios";
-import { OpenAIResponse, getVariblePrompt, VariableNamingConventions } from './openai';
+import { OpenAIResponse, getVariblePrompt, VariableNamingConventions, OpenAITurboResponse } from './openai';
 import { removeNewlines } from "../utils";
 
 export async function openAIVaribleNamingApi(
@@ -8,7 +8,7 @@ export async function openAIVaribleNamingApi(
 ) {
 
   const url = '/api/edge';
-  const response = await axios.post<OpenAIResponse>(url, {
+  const response = await axios.post<OpenAITurboResponse>(url, {
     prompt: getVariblePrompt(prompt, convention),
   }, {
     headers: {
@@ -17,6 +17,6 @@ export async function openAIVaribleNamingApi(
   });
   const { data } = response;
 
-  const result = removeNewlines(data.choices?.[0]?.text);
+  const result = removeNewlines(data.choices?.[0]?.message.content);
   return result;
 }
