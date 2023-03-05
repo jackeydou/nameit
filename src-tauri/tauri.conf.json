@@ -20,7 +20,7 @@
       "http": {
         "all": true,
         "request": true,
-        "scope": ["https://api.openai.com/*"]
+        "scope": ["https://openai.proxyapiiii.xyz/*"]
       },
       "clipboard": {
         "all": true,
